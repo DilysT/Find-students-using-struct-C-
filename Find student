@@ -1,0 +1,35 @@
+void Nhap(SinhVien& sv) {
+	cin >> sv.MASV;
+	cin.ignore(); 
+	cin.getline(sv.HoTen, 100);
+	cin >> sv.NgaySinh;
+	cin >> sv.GioiTinh;
+	cin >> sv.DiemToan;
+	cin >> sv.DiemLy;
+	cin >> sv.DiemHoa;
+	sv.DTB = (sv.DiemToan + sv.DiemLy + sv.DiemHoa) / 3;
+}
+void Nhap(SinhVien A[], int& n)
+{
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		Nhap(A[i]);
+	}
+}
+void TimTheoNamSinh(SinhVien A[], int n, int namsinh) {
+    for (int i = 0; i < n; i++) {
+
+        string ns = A[i].NgaySinh;
+        int NAMSINH = stoi(ns.substr(6, 4));
+
+        if (NAMSINH == namsinh) {
+
+            A[i].DTB = (A[i].DiemToan + A[i].DiemLy + A[i].DiemHoa) / 3.0;
+
+            cout << A[i].MASV << '\t' << A[i].HoTen
+                << '\t' << A[i].NgaySinh << '\t' << A[i].GioiTinh
+                << '\t' << A[i].DiemToan << '\t' << A[i].DiemLy << '\t'
+                << A[i].DiemHoa << '\t'  << setprecision(3) << A[i].DTB << endl;
+        }
+    }
+}
